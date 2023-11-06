@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title> Aruzhan's Website</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+	<link rel="icon" href="favicon.png" type="image/x-icon">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</html>
+
+<div class="game-container">  <h2>Let's Take a Break</h2>
+  <p>Drag the equation into their correct solution:</p>
+  <div class="draggable" id="What is the principle of design that creates visual interest and excitement?" draggable="true" ondragstart="drag(event)">What is the principle of design that creates visual interest and excitement?</div>  
+  <div class="draggable" id="What is the principle of design that creates a sense of harmony and order" draggable="true" ondragstart="drag(event)">What is the principle of design that creates a sense of harmony and order</div>
+  <div class="draggable" id="What is the principle of design that uses the same elements or patterns over and over again?" draggable="true" ondragstart="drag(event)">What is the principle of design that uses the same elements or patterns over and over again?</div>
+  <div class="category" id="Contrast" ondrop="drop(event)" ondragover="allowDrop(event)">Contrast</div>  
+  <div class="category" id="Balance" ondrop="drop(event)" ondragover="allowDrop(event)">Balance</div>
+  <div class="category" id="Repetition" ondrop="drop(event)" ondragover="allowDrop(event)">Repetition</div>
+  <p id="game-message"></p>  <button id="click-button">Done</button> </div>
+
+<script>function drag(event) {
+  event.dataTransfer.setData("text", event.target.id);}
+function allowDrop(event) {
+  event.preventDefault();}
+function drop(event) {
+  event.preventDefault();  var data = event.dataTransfer.getData("text");
+  event.target.appendChild(document.getElementById(data));
+  var categories = document.querySelectorAll('.category');  var correctCategory = event.target.id;
+  var currentCategory = data;
+  if (eval(currentCategory) === eval(correctCategory)) {    document.getElementById("game-message").textContent = "Correct!";
+  } else {    document.getElementById("game-message").textContent = "Try again.";
+  }}
+</script>
+<div id="element" style="opacity: 0;"> Good luck with your quiz</div>
+<button onclick="fadeElement()">Click me</button>
+<script>
+  function fadeElement() {
+  var element = document.getElementById("element");
+  var currentOpacity = window.getComputedStyle(element).getPropertyValue("opacity");
+  var targetOpacity = currentOpacity === "0" ? "1" : "0";
+  var animationDuration = 1000; 
+
+  var start = null;
+  function fade(timestamp) {
+    if (!start) start = timestamp;
+    var progress = timestamp - start;
+    var opacity = (progress / animationDuration) * (targetOpacity - currentOpacity) + parseFloat(currentOpacity);
+    element.style.opacity = opacity;
+
+    if (progress < animationDuration) {
+      window.requestAnimationFrame(fade);
+    }
+  }
+
+  window.requestAnimationFrame(fade);
+}
+</script>
+<div>
+  <div class="box"></div>
+<script>
+  
+var clickButton = document.getElementById("clickButton");
+clickButton.addEventListener("click", function() {
+alert("Button clicked!");
+});
+
+var box = document.querySelector(".box");
+box.addEventListener("mouseover", function() {
+box.style.backgroundColor = "green";
+});
+
+box.addEventListener("mouseout", function() {
+box.style.backgroundColor = "blue";
+});
+
+// Keypress event listener
+document.addEventListener("keypress", function(event) {
+if (event.key === "Enter") {
+  console.log("Enter key pressed!");
+}
+});
+
+</script>
+</body>
+</html>

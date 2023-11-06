@@ -44,7 +44,23 @@ function moveBall() {
 }
 
 window.requestAnimationFrame(moveBall);
+</script>
+<button onclick="changeBackgroundImage()">What am l?</button>
+<div id="container"></div>
+<script>
+    function changeBackgroundImage() {
+  var container = document.getElementById("container");
+  var currentImage = container.style.backgroundImage;
+
+ 
+  if (currentImage === 'url("changeimage.png")') {
+    container.style.backgroundImage = 'url("changeimage.png")';
+  } else {
+    container.style.backgroundImage = 'url("changeimage.png")';
+  }
+}
 
 </script>
+
 </body>
 </html>
